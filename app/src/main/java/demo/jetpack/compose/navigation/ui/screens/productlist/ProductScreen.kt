@@ -20,8 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.plcoding.meditationuiyoutube.ui.components.ProductCard
-import demo.jetpack.compose.domain.model.Product
-import demo.jetpack.compose.domain.state.ProductScreenState
+import demo.jetpack.compose.domain.state.Result
 import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
 
 
@@ -47,15 +46,15 @@ fun ProductScreen(navController: NavHostController) {
         ) {
 
             when (screenState) {
-                is ProductScreenState.Loading -> {
+                is Result.Loading -> {
                     // Show loading indicator
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
                         CircularProgressIndicator()
                     }
                 }
-                is ProductScreenState.Success -> {
+                is Result.Success -> {
                     // Show data
-                    val products = (screenState as ProductScreenState.Success).products
+                    val products = (screenState as Result.Success).data
                     LazyColumn {
 
                         items(products) { product ->
@@ -63,9 +62,9 @@ fun ProductScreen(navController: NavHostController) {
                         }
                     }
                 }
-                is ProductScreenState.Error -> {
+                is Result.Error -> {
                     // Show error message
-                    Text("Error fetching data")
+                    Text((screenState as Result.Error).errorMessage)
                 }
             }
 

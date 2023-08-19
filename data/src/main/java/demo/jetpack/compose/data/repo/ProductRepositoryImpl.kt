@@ -19,10 +19,10 @@ class ProductRepositoryImpl : ProductRepository {
 
     }
 
-    override suspend fun getProductById(id: String): Flow<Product> {
+    override suspend fun getProductById(id: String): Flow<Product?> {
         return flow {
             delay(3000)
-            emit(generateProducts().first { it.productCode == id })
+            emit(generateProducts().firstOrNull { it.productCode == id })
         }.flowOn(Dispatchers.IO)
     }
 

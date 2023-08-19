@@ -101,7 +101,8 @@ fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
                         text = menu.title,
-                        style = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onTertiary)
+                        style = MaterialTheme.typography.titleMedium
+                            .copy(color = MaterialTheme.colorScheme.onTertiary)
                     )
                 }
             }
