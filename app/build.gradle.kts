@@ -1,6 +1,10 @@
 plugins {
     id("com.android.application")
+    id("kotlin-kapt")
+
+
     id("org.jetbrains.kotlin.android")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -29,12 +33,8 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(11))
     }
     buildFeatures {
         compose = true
@@ -48,8 +48,13 @@ android {
         }
     }
 }
-
+kapt {
+    correctErrorTypes = true
+}
 dependencies {
+    implementation(project(mapOf("path" to ":data")))
+    implementation(project(mapOf("path" to ":domain")))
+    val lifecycleVersion = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -59,9 +64,14 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
     implementation ("androidx.navigation:navigation-compose:2.7.0")
     implementation ("io.coil-kt:coil-compose:2.4.0")
+
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

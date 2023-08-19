@@ -6,14 +6,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import demo.jetpack.compose.navigation.ui.screens.MenuScreen
-import com.plcoding.meditationuiyoutube.ui.Screens.ProductDetailsScreen
-import com.plcoding.meditationuiyoutube.ui.Screens.ProductScreen
-import demo.jetpack.compose.navigation.data.AppMenu
-import demo.jetpack.compose.navigation.data.Product
+import demo.jetpack.compose.navigation.ui.screens.productlist.ProductScreen
+import demo.jetpack.compose.navigation.model.AppMenu
+import demo.jetpack.compose.navigation.ui.screens.details.ProductDetailsScreen
+import demo.jetpack.compose.navigation.ui.screens.menu.MenuScreen
 
 @Composable
-fun App(menuList: List<AppMenu>, products: List<Product>) {
+fun App(menuList: List<AppMenu>) {
 
     val navController = rememberNavController()
 
@@ -22,8 +21,7 @@ fun App(menuList: List<AppMenu>, products: List<Product>) {
         composable("menu") { MenuScreen(navController, menuList) }
         composable("product_list") {
             ProductScreen(
-                navController = navController,
-                products = products
+                navController = navController
             )
         }
         composable(

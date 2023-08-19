@@ -1,4 +1,4 @@
-package demo.jetpack.compose.navigation.data
+package demo.jetpack.compose.navigation.model
 
 data class AppMenu(
     val title: String,

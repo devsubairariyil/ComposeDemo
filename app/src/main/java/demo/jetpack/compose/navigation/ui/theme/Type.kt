@@ -1,5 +1,6 @@
 package demo.jetpack.compose.navigation.ui.theme
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -21,19 +22,16 @@ val gothicA1 = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyMedium = TextStyle(
-        color = TextWhite,
         fontFamily = gothicA1,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
     headlineLarge = TextStyle(
-        color = AquaBlue,
         fontFamily = gothicA1,
         fontWeight = FontWeight.Bold,
         fontSize = 22.sp
     ),
     headlineMedium = TextStyle(
-        color = AquaBlue,
         fontFamily = gothicA1,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp

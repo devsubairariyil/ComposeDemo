@@ -1,4 +1,7 @@
-package demo.jetpack.compose.navigation.data
+package demo.jetpack.compose.navigation.model
+
+import demo.jetpack.compose.domain.model.ImageUrls
+import demo.jetpack.compose.domain.model.Product
 
 object DataSource {
     val productList = generateProducts()

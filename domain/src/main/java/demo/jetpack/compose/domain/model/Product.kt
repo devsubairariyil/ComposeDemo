@@ -1,4 +1,4 @@
-package demo.jetpack.compose.navigation.data
+package demo.jetpack.compose.domain.model
 
 data class Product(
     val name: String,

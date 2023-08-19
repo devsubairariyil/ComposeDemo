@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Compose Navigation Demo"
 include(":app")
- 
+include(":domain")
+include(":data")
