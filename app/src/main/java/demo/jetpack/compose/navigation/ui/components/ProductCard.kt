@@ -1,6 +1,7 @@
 package demo.jetpack.compose.navigation.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,6 +31,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import demo.jetpack.compose.navigation.R
 import demo.jetpack.compose.navigation.data.Product
@@ -37,13 +39,14 @@ import kotlin.math.roundToInt
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun ProductCard(
-    product: Product,
+fun ProductCard(navController: NavController,
+                product: Product,
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
+            .clickable { navController.navigate("productDetails/${product.productCode}") },
     ) {
         Row(
             modifier = Modifier

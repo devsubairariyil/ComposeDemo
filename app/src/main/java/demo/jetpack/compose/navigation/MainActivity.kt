@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import demo.jetpack.compose.navigation.data.AppMenu
+import demo.jetpack.compose.navigation.ui.components.App
 import demo.jetpack.compose.navigation.ui.screens.MenuScreen
 import demo.jetpack.compose.navigation.ui.theme.DemoAppTheme
 
@@ -16,15 +17,18 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             DemoAppTheme {
-                MenuScreen(menuList = listOf(
-                    AppMenu("Product List", 1)
-                )){
-                    //Menu with ID $it clicked
-                }
-                //ProductScreen(products = DataSource.productList)
-                //ProductDetailsScreen(productId = "PC-12")
+                App(
+                    menuList = listOf(
+                        AppMenu(
+                            "Product List",
+                            1
+                        )
+                    )
+                )
             }
+            //ProductScreen(products = DataSource.productList)
+            //ProductDetailsScreen(productId = "PC-12")
         }
     }
-
 }
+

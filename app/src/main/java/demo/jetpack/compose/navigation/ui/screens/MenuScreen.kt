@@ -33,6 +33,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import demo.jetpack.compose.navigation.R
 import demo.jetpack.compose.navigation.data.AppMenu
 import demo.jetpack.compose.navigation.ui.theme.ButtonBlue
@@ -41,7 +42,8 @@ import demo.jetpack.compose.navigation.ui.theme.TextWhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MenuScreen(menuList: List<AppMenu>, menuItemClicked: (menuId: Int) -> Unit) {
+fun MenuScreen(menuList: List<AppMenu>,
+               menuItemClicked: (menuId: Int) -> Unit) {
     var favoriteState by remember { mutableStateOf(false) }
     var settingsState by remember { mutableStateOf(false) }
 

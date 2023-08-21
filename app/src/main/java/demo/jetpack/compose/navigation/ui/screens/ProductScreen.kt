@@ -10,6 +10,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import demo.jetpack.compose.navigation.data.Product
 import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
 import demo.jetpack.compose.navigation.ui.components.ProductCard
@@ -18,7 +19,8 @@ import demo.jetpack.compose.navigation.ui.theme.AquaBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProductScreen(products: List<Product>) {
+fun ProductScreen(navController: NavController,
+                  products: List<Product>) {
     Scaffold(
         topBar = {
             MyAppToolbar(title = "Products")
@@ -34,7 +36,7 @@ fun ProductScreen(products: List<Product>) {
 
             LazyColumn {
                 items(products) { product ->
-                    ProductCard(product = product)
+                    ProductCard(navController = navController,product = product)
                 }
             }
         }

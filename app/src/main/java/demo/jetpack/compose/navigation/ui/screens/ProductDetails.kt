@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import demo.jetpack.compose.navigation.R
 import demo.jetpack.compose.navigation.data.DataSource
@@ -25,7 +26,8 @@ import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProductDetailsScreen(productId: String) {
+fun ProductDetailsScreen(navController: NavController,
+                         productId: String) {
     val product = DataSource.getProductById(productId) // Replace with your data retrieval logic
     var isFabVisible by remember { mutableStateOf(false) }
 
