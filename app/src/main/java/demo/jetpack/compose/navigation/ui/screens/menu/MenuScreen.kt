@@ -90,7 +90,7 @@ fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
                         .fillMaxWidth()
                         .align(Alignment.CenterHorizontally)
                         .padding(16.dp)
-                        .background(MaterialTheme.colorScheme.tertiary)
+                        .background(MaterialTheme.colorScheme.primaryContainer)
                         .padding(16.dp)
                         .clickable {
                             menu.action()
@@ -102,7 +102,7 @@ fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
                         textAlign = TextAlign.Center,
                         text = menu.title,
                         style = MaterialTheme.typography.titleMedium
-                            .copy(color = MaterialTheme.colorScheme.onTertiary)
+                            .copy(color = MaterialTheme.colorScheme.onPrimaryContainer)
                     )
                 }
             }
