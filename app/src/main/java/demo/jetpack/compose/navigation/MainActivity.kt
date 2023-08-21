@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import dagger.hilt.android.AndroidEntryPoint
 import demo.jetpack.compose.navigation.model.AppMenu
-import demo.jetpack.compose.navigation.model.DataSource
 import demo.jetpack.compose.navigation.ui.components.App
 import demo.jetpack.compose.navigation.ui.theme.DemoAppTheme
 
@@ -21,16 +20,18 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             DemoAppTheme {
-                App(menuList = generateMenu())
+                App(
+                    menuList = listOf(
+                        AppMenu(
+                            "Product List",
+                            1
+                        )
+                    )
+                )
+            }
+            //ProductScreen(products = DataSource.productList)
+            //ProductDetailsScreen(productId = "PC-12")
             }
         }
     }
 
-    private fun generateMenu(): List<AppMenu> {
-        val list = mutableListOf<AppMenu>()
-        list.add(AppMenu("Product Screen") {
-
-        })
-        return list
-    }
-}

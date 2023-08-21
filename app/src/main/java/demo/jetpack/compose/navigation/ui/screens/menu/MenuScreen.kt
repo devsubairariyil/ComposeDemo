@@ -39,7 +39,7 @@ import demo.jetpack.compose.navigation.model.AppMenu
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
+fun MenuScreen( menuList: List<AppMenu>, action: (menuId: Int) -> Unit) {
     var favoriteState by remember { mutableStateOf(false) }
     var settingsState by remember { mutableStateOf(false) }
 
@@ -93,8 +93,7 @@ fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
                         .background(MaterialTheme.colorScheme.primaryContainer)
                         .padding(16.dp)
                         .clickable {
-                            menu.action()
-                            navController.navigate("product_list")
+                            action(menu.menuId)
                         }
                 ) {
                     Text(

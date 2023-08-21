@@ -18,7 +18,13 @@ fun App(menuList: List<AppMenu>) {
 
 
     NavHost(navController = navController, startDestination = "menu") {
-        composable("menu") { MenuScreen(navController, menuList) }
+        composable("menu") {
+            MenuScreen(menuList){
+                if(it == 1){
+                    navController.navigate("product_list")
+                }
+            }
+        }
         composable("product_list") {
             ProductScreen(
                 navController = navController
