@@ -41,7 +41,7 @@ import demo.jetpack.compose.navigation.ui.theme.TextWhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MenuScreen(menuList: List<AppMenu>) {
+fun MenuScreen(menuList: List<AppMenu>, menuItemClicked: (menuId: Int) -> Unit) {
     var favoriteState by remember { mutableStateOf(false) }
     var settingsState by remember { mutableStateOf(false) }
 
@@ -95,7 +95,7 @@ fun MenuScreen(menuList: List<AppMenu>) {
                         .background(ButtonBlue)
                         .padding(16.dp)
                         .clickable {
-                            menu.action()
+                            menuItemClicked(menu.menuId)
 
                         }
                 ) {

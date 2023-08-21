@@ -17,10 +17,10 @@ class MainActivity : ComponentActivity() {
 
             DemoAppTheme {
                 MenuScreen(menuList = listOf(
-                    AppMenu("Product List") {
-
-                    }
-                ))
+                    AppMenu("Product List", 1)
+                )){
+                    //Menu with ID $it clicked
+                }
                 //ProductScreen(products = DataSource.productList)
                 //ProductDetailsScreen(productId = "PC-12")
             }
