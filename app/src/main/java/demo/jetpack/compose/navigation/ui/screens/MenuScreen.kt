@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -32,22 +30,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import demo.jetpack.compose.navigation.R
 import demo.jetpack.compose.navigation.data.AppMenu
-import demo.jetpack.compose.navigation.ui.components.MenuItem
-import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
 import demo.jetpack.compose.navigation.ui.theme.ButtonBlue
 import demo.jetpack.compose.navigation.ui.theme.DeepBlue
 import demo.jetpack.compose.navigation.ui.theme.TextWhite
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
+fun MenuScreen(menuList: List<AppMenu>) {
     var favoriteState by remember { mutableStateOf(false) }
     var settingsState by remember { mutableStateOf(false) }
 
@@ -102,7 +96,7 @@ fun MenuScreen(navController: NavHostController, menuList: List<AppMenu>) {
                         .padding(16.dp)
                         .clickable {
                             menu.action()
-                            navController.navigate("product_list")
+
                         }
                 ) {
                     Text(
