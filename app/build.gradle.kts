@@ -48,6 +48,7 @@ android {
         }
     }
 }
+
 kapt {
     correctErrorTypes = true
 }
@@ -82,6 +83,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
-    androidTestImplementation("io.mockk:mockk:1.12.0")
 
 }
