@@ -8,6 +8,7 @@ import demo.jetpack.compose.navigation.ui.screens.menu.MenuScreen
 import org.junit.Rule
 import org.junit.Test
 
+
 class MenuScreenTest {
 
     @get:Rule
@@ -16,7 +17,7 @@ class MenuScreenTest {
     @Test
     fun testEmptyMenuList() {
         composeTestRule.setContent {
-            MenuScreen(menuList = emptyList())
+            MenuScreen(menuList = emptyList()){}
         }
 
         // Assert that no text is displayed since the list is empty
@@ -31,7 +32,7 @@ class MenuScreenTest {
         )
 
         composeTestRule.setContent {
-            MenuScreen(menuList = menuList)
+            MenuScreen(menuList = menuList){}
         }
 
         // Assert that each item in the list is displayed
