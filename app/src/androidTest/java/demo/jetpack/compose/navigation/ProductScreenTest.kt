@@ -64,4 +64,22 @@ class ProductScreenTest {
         composeTestRule.assertProductList(listOf(Product.default()))
 
     }
+    @Test
+    fun testErrorState() {
+        // Create a mock ViewModel instance
+        val mockViewModel: ProductListViewModel = mockk()
+        val navController: NavHostController = mockk()
+
+        // Set the mock ViewModel's screenState to Loading
+        every { mockViewModel.screenState } returns MutableStateFlow(Result.Error("Test Error"))
+
+        // Launch the ProductScreen Composable with the mock ViewModel
+        composeTestRule.setContent {
+            ProductScreen(navController, mockViewModel)
+        }
+
+        // Use composeTestRule to find UI elements and assert their properties
+        // For example, assert that a CircularProgressIndicator is displayed
+        composeTestRule.onNodeWithText("Test Error").assertExists()
+    }
 }
