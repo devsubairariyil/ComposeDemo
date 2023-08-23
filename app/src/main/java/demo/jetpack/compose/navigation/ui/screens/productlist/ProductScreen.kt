@@ -17,10 +17,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.plcoding.meditationuiyoutube.ui.components.ProductCard
+import demo.jetpack.compose.navigation.ui.components.ProductCard
 import demo.jetpack.compose.domain.state.Result
 import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
 

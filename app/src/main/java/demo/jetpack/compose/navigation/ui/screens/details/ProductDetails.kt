@@ -2,7 +2,6 @@ package demo.jetpack.compose.navigation.ui.screens.details
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -24,12 +23,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.plcoding.meditationuiyoutube.ui.components.ProductCard
 import demo.jetpack.compose.domain.state.Result
 import demo.jetpack.compose.navigation.R
-import demo.jetpack.compose.navigation.model.DataSource
 import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
-import demo.jetpack.compose.navigation.ui.screens.productlist.ProductListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

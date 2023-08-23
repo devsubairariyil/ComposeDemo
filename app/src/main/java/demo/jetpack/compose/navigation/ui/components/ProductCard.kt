@@ -1,4 +1,4 @@
-package com.plcoding.meditationuiyoutube.ui.components
+package demo.jetpack.compose.navigation.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
