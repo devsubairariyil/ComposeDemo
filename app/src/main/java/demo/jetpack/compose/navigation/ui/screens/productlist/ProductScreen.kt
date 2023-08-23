@@ -17,8 +17,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import demo.jetpack.compose.navigation.ui.components.ProductCard
 import demo.jetpack.compose.domain.state.Result
 import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
@@ -26,8 +31,7 @@ import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProductScreen(navController: NavHostController) {
-    val viewModel: ProductListViewModel = hiltViewModel()
+fun ProductScreen(navController: NavHostController, viewModel: ProductListViewModel) {
     val screenState by viewModel.screenState.collectAsState()
     Scaffold(
         topBar = {
@@ -48,10 +52,12 @@ fun ProductScreen(navController: NavHostController) {
             when (screenState) {
                 is Result.Loading -> {
                     // Show loading indicator
-                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+                    Box(modifier = Modifier.fillMaxSize().testTag("LoadingIndicator"),
+                        contentAlignment = Alignment.Center) {
                         CircularProgressIndicator()
                     }
                 }
+
                 is Result.Success -> {
                     // Show data
                     val products = (screenState as Result.Success).data
@@ -62,6 +68,7 @@ fun ProductScreen(navController: NavHostController) {
                         }
                     }
                 }
+
                 is Result.Error -> {
                     // Show error message
                     Text((screenState as Result.Error).errorMessage)

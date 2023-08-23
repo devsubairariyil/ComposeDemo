@@ -3,8 +3,13 @@ package demo.jetpack.compose.navigation
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
+import demo.jetpack.compose.domain.state.Result
 import demo.jetpack.compose.navigation.model.AppMenu
 import demo.jetpack.compose.navigation.ui.screens.menu.MenuScreen
+import demo.jetpack.compose.navigation.ui.screens.productlist.ProductListViewModel
+import demo.jetpack.compose.navigation.ui.screens.productlist.ProductScreen
 import org.junit.Rule
 import org.junit.Test
 
@@ -17,7 +22,7 @@ class MenuScreenTest {
     @Test
     fun testEmptyMenuList() {
         composeTestRule.setContent {
-            MenuScreen(menuList = emptyList()){}
+            MenuScreen(menuList = emptyList()) {}
         }
 
         // Assert that no text is displayed since the list is empty
@@ -32,7 +37,7 @@ class MenuScreenTest {
         )
 
         composeTestRule.setContent {
-            MenuScreen(menuList = menuList){}
+            MenuScreen(menuList = menuList) {}
         }
 
         // Assert that each item in the list is displayed
@@ -40,4 +45,6 @@ class MenuScreenTest {
             composeTestRule.onNodeWithText(item.title).assertIsDisplayed()
         }
     }
+
+
 }

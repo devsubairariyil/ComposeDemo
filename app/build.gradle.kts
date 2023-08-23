@@ -47,6 +47,13 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    testOptions {
+        packaging {
+            jniLibs {
+                useLegacyPackaging = true
+            }
+        }
+    }
 }
 
 kapt {
@@ -83,5 +90,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
+
+    testImplementation ("io.mockk:mockk:1.12.0" )// Use the latest version
+    androidTestImplementation ("io.mockk:mockk-android:1.12.0") // Use the latest version
+
 
 }

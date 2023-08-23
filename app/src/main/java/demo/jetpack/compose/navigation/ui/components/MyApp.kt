@@ -1,6 +1,7 @@
 package demo.jetpack.compose.navigation.ui.components
 
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,7 +28,7 @@ fun App(menuList: List<AppMenu>) {
         }
         composable("product_list") {
             ProductScreen(
-                navController = navController
+                navController = navController, hiltViewModel()
             )
         }
         composable(

@@ -28,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -46,6 +47,7 @@ fun ProductCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .testTag("product_card_${product.productCode}")
             .padding(top = 16.dp, start = 16.dp, end = 16.dp)
             .clickable { navController.navigate("productDetails/${product.productCode}") },
     ) {
@@ -122,7 +124,7 @@ fun ProductCard(
                         style = MaterialTheme.typography.bodyMedium.copy(Color.Black)
                     )
                     Text(
-                        text = "-${product.discount}%",
+                        text = "Discount: ${product.discount}%",
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color.Red,
                         fontSize = 16.sp
@@ -133,6 +135,7 @@ fun ProductCard(
                 Row(
                     modifier = Modifier
                         .padding(top = 4.dp)
+                        .testTag("Indicators_${product.productCode}")
                         .horizontalScroll(rememberScrollState())
                 ) {
                     product.indicators.forEach { indicator ->
