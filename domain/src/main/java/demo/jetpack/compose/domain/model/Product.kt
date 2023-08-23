@@ -11,7 +11,24 @@ data class Product(
     val isRestricted: Boolean = false,
     val description: String = "",
 
-)
+) {
+    companion object {
+        fun default(): Product {
+            return Product(
+                name = "Sample Product",
+                productCode = "Code",
+                indicators = listOf("A", "B"),
+                price = 100.0,
+                discount = 25,
+                imageUrl = "",
+                isSoldOut = true,
+                isRestricted = true,
+                description = ""
+                )
+        }
+    }
+}
+
 object ImageUrls {
     val productImageUrls = arrayOf(
         "https://picsum.photos/id/1018/400/300",
