@@ -17,7 +17,7 @@ data class Product(
             return Product(
                 name = "Sample Product",
                 productCode = "Code",
-                indicators = listOf("A", "B"),
+                indicators = ('A'..'Z').map { it.toString() },
                 price = 100.0,
                 discount = 25,
                 imageUrl = "",
