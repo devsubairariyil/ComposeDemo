@@ -142,6 +142,7 @@ fun ProductCard(
                         Text(
                             text = indicator,
                             modifier = Modifier
+                                .testTag("${product.productCode}.$indicator")
                                 .padding(end = 4.dp)
                                 .clip(CircleShape)
                                 .background(Color.Blue)

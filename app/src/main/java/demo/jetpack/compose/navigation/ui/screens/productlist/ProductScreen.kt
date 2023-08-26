@@ -24,6 +24,8 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import demo.jetpack.compose.domain.model.ImageUrls
+import demo.jetpack.compose.domain.model.Product
 import demo.jetpack.compose.navigation.ui.components.ProductCard
 import demo.jetpack.compose.domain.state.Result
 import demo.jetpack.compose.navigation.ui.components.MyAppToolbar
@@ -46,13 +48,16 @@ fun ProductScreen(navController: NavHostController, viewModel: ProductListViewMo
             modifier = Modifier
                 .padding(it)
                 .fillMaxSize()
+                .testTag("AppContent")
                 .background(MaterialTheme.colorScheme.background)
         ) {
 
             when (screenState) {
                 is Result.Loading -> {
                     // Show loading indicator
-                    Box(modifier = Modifier.fillMaxSize().testTag("LoadingIndicator"),
+                    Box(modifier = Modifier
+                        .fillMaxSize()
+                        .testTag("LoadingIndicator"),
                         contentAlignment = Alignment.Center) {
                         CircularProgressIndicator()
                     }
@@ -61,12 +66,7 @@ fun ProductScreen(navController: NavHostController, viewModel: ProductListViewMo
                 is Result.Success -> {
                     // Show data
                     val products = (screenState as Result.Success).data
-                    LazyColumn {
-
-                        items(products) { product ->
-                            ProductCard(product = product, navController)
-                        }
-                    }
+                    createProductList(products = products, navController)
                 }
 
                 is Result.Error -> {
@@ -76,4 +76,69 @@ fun ProductScreen(navController: NavHostController, viewModel: ProductListViewMo
             }
         }
     }
+}
+
+
+@Composable
+fun createProductList(products: List<Product>, navController: NavHostController){
+    LazyColumn(modifier = Modifier.testTag("ProductList")) {
+
+        items(products) { product ->
+            ProductCard(product = product, navController)
+        }
+    }
+
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+@Preview
+fun createProductListPreview(){
+    val navController = rememberNavController()
+
+    Scaffold(
+        topBar = {
+            MyAppToolbar(title = "Products",
+                navigateUp = {
+                    navController.popBackStack()
+                })
+        }
+
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            createProductList(generatePreviewProducts(), navController)
+        }
+    }
+
+}
+
+private fun generatePreviewProducts(): List<Product>{
+    val list = mutableListOf<Product>()
+    for (i in 1 until 50){
+        val indicators = mutableListOf<String>()
+        repeat(10){
+            indicators.add(java.util.UUID.randomUUID().toString().substring(1,3).uppercase())
+        }
+
+        list.add(
+            Product(
+                name = "Product - $i",
+                productCode = "PC-$i",
+                discount = 0,//Random(20).toString().toInt(),
+                price = 100.0,//Random(200).toString().toDouble(),
+                indicators = indicators,
+                isSoldOut = i % 3 == 0,
+                isRestricted = i % 7 == 0,
+                imageUrl = ImageUrls.productImageUrls[i % 10],
+                description = "Product Description Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+
+            )
+        )
+    }
+    return list
 }
